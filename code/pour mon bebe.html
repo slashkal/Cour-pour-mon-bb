@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Page d'accueil</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #FFB6C1, #FF69B4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    .container {
+      text-align: center;
+      color: white;
+      animation: fadeIn 1.5s ease;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+    a {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: white;
+      color: #FF69B4;
+      font-weight: bold;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.2em;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+    a:hover {
+      transform: translateY(-5px);
+      background-color: #FFE4E1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-50px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    .slide-out {
+      animation: slideOut 0.5s forwards;
+    }
+    @keyframes slideOut {
+      to { transform: translateX(-100%); opacity: 0;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="home">
+    <h1>Pour toi ma chérie 💖</h1>
+    <a id="startBtn">Voir les fiches</a>
+  </div>
+
+  <script>
+    const startBtn = document.getElementById('startBtn');
+    const home = document.getElementById('home');
+
+    startBtn.addEventListener('click', function() {
+      // Ajoute l'animation
+      home.classList.add('slide-out');
+
+      // Redirection après un petit délai pour voir l'animation
+      setTimeout(() => {
+        // Redirection vers le fichier HTML dans le sous-dossier "code"
+        window.location.href = "code/test.html";
+      }, 500); // 500ms = durée de l'animation
+    });
+  </script>
+</body>
+</html>

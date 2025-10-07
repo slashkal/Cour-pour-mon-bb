@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Fiches de cours</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #4D3F3F;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 40px;
+    }
+
+    /* Conteneur principal : cartes à gauche + iframe à droite */
+    .main-container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* Colonne gauche (les cartes) */
+    .cards-container {
+      flex: 1;
+      max-width: 25%; /* cartes prennent environ 25 % de la largeur */
+    }
+
+    /* Style des cartes */
+    .card {
+      background: white;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      color: #444;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    /* style des liens façon “dépliant” */
+    .links a {
+      display: block;
+      padding: 10px 15px;
+      margin: 10px 0;
+      background-color: #e0f0ff;
+      border-left: 5px solid #0066cc;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #0066cc;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .links a:hover {
+      background-color: #cce0ff;
+      transform: translateX(5px);
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    }
+
+    /* Iframe à droite */
+    #pdfViewer {
+      width: 70%; /* prend 70 % de la page */
+      height: 1500px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      background-color: white;
+    }
+
+    /* Adaptation sur petit écran */
+    @media (max-width: 900px) {
+      .main-container {
+        flex-direction: column;
+      }
+      .cards-container, #pdfViewer {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>📚 Fiches et Exercices</h1>
+
+  <div class="main-container">
+
+    <!-- 📘 Colonne gauche -->
+    <div class="cards-container">
+
+      <div class="card">
+        <h2>Biologie végétale</h2>
+        <div class="links">
+          <a href="#" onclick="ouvrirPDF('https://youtu.be/dQw4w9WgXcQ')">🎥 Vidéo explicative</a>
+          <a href="#" onclick="ouvrirPDF('https://exemple.com/exercice1.pdf')">📄 Exercice 1</a>
+          <a href="#" onclick="ouvrirPDF('https://exemple.com/cours1.pdf')">📘 Fiche de cours</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Biologie animale</h2>
+        <div class="links">
+          <a href="#" onclick="ouvrirPDF('https://exemple.com/video2')">🎥 Vidéo</a>
+          <a href="#" onclick="ouvrirPDF('https://exemple.com/exercice2.pdf')">📄 Exercices</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Biologie cellulaire</h2>
+        <div class="links">
+          <a href="#" onclick="ouvrirPDF('https://cours-galien.fr/wp-content/uploads/2021/09/Grenoble-Bio-Cell.pdf')">📄 Cours PDF</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Bioinformatique</h2>
+        <div class="links">
+          <a href="#" onclick="ouvrirPDF('file:///C:/Users/ewenp/Downloads/DEV%20A-sujet2018-15%20(1).pdf')">📄 Annale entraînement</a>
+          <a href="#" onclick="ouvrirPDF('https://moodle2025.uca.fr/pluginfile.php/122418/mod_resource/content/1/Developpement%20animal%20polycop%202024-2025.pdf')">📄 Schéma gastrulation et clivage</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 🧾 Zone d’affichage PDF / vidéo -->
+    <iframe id="pdfViewer" src=""></iframe>
+  </div>
+
+  <script>
+    function ouvrirPDF(url){
+      const iframe = document.getElementById('pdfViewer');
+      iframe.src = url;
+      window.scrollTo(0, 0); // remonte en haut de page à chaque ouverture
+    }
+  </script>
+</body>
+</html>
